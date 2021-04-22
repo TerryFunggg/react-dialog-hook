@@ -1,17 +1,21 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { createPortal } from "react-dom";
 import { Dialog, Transition } from "@headlessui/react";
+import { DialogContext } from "./DialogContext";
 
 const dialogRoot = document.getElementById("dialog-root") as HTMLElement;
 export default function MyDoalog() {
+  const { dialogIsActive, dialogContent, handleDialog } = useContext(
+    DialogContext
+  );
   return createPortal(
-    <Transition show={true} as={Fragment}>
+    <Transition show={dialogIsActive} as={Fragment}>
       <Dialog
         as="div"
         className="fixed inset-0 z-10 overflow-y-auto"
         static
-        open={true}
-        onClose={() => {}}
+        open={dialogIsActive}
+        onClose={() => handleDialog()}
       >
         <div className="min-h-screen px-4 text-center">
           <Transition.Child
@@ -47,7 +51,7 @@ export default function MyDoalog() {
                 as="h3"
                 className="text-lg font-medium leading-6 text-gray-900"
               >
-                Payment successful
+                {dialogContent?.title || "Sure?"}
               </Dialog.Title>
               <div className="mt-2">
                 <p className="text-sm text-gray-500">
@@ -60,9 +64,9 @@ export default function MyDoalog() {
                 <button
                   type="button"
                   className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                  onClick={() => {}}
+                  onClick={() => dialogContent?.onOK() || {}}
                 >
-                  Got it, thanks!
+                  {dialogContent?.description || "Are your sure?"}
                 </button>
               </div>
             </div>
