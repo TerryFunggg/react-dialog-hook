@@ -8,7 +8,7 @@ export default function Component1() {
 
   return (
     <button
-      className="bg-blue-800 text-white py-3 px-6 text-2xl font-bold rounded-xl focus:outline-none hover:bg-blue-600 transition ease-out duration-500"
+      className="bg-green-400 text-white py-3 px-6 text-2xl font-bold rounded-xl focus:outline-none hover:bg-green-300 transition ease-out duration-500 shadow-xl"
       onClick={() =>
         handleDialog({
           title: "Hi",

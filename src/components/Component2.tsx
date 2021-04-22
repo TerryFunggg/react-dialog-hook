@@ -8,7 +8,7 @@ export default function Component2() {
 
   return (
     <button
-      className="bg-red-800 text-white py-3 px-6 text-2xl font-bold rounded-xl focus:outline-none hover:bg-red-600 transition ease-out duration-500"
+      className="bg-pink-400 text-white py-3 px-6 text-2xl font-bold rounded-xl focus:outline-none hover:bg-pink-300 transition ease-out duration-500 shadow-xl"
       onClick={() =>
         handleDialog({
           title: "Oh,Hi again",
