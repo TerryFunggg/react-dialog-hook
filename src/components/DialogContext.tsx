@@ -26,6 +26,7 @@ const DialogProvider = ({ children }: Props) => {
     <DialogContext.Provider
       value={{ dialogIsActive, handleDialog, dialogContent }}
     >
+      <MyDialog />
       {children}
     </DialogContext.Provider>
   );
